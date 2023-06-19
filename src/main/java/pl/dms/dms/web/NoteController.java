@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/notes")
 public class NoteController {
-
     private final NoteService noteService;
 
     @GetMapping
@@ -29,7 +28,6 @@ public class NoteController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(note, HttpStatus.OK);
-
     }
 
     @PostMapping

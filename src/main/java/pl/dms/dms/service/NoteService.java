@@ -3,7 +3,6 @@ package pl.dms.dms.service;
 import pl.dms.dms.domain.Note;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface NoteService {
     List<Note> findAll();
