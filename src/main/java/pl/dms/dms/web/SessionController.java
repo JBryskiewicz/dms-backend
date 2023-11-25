@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.dms.dms.domain.Session;
 import pl.dms.dms.service.SessionService;
 
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -38,9 +39,14 @@ public class SessionController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Session> updateSession(@PathVariable Long id, @RequestBody Session session) {
+
+        session.setEdited(true);
+        session.setEditedDate(new Date());
         Session updatedSession = sessionService.updateSession(id, session);
+
         if (updatedSession == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
         }
         return new ResponseEntity<>(updatedSession, HttpStatus.OK);
     }
