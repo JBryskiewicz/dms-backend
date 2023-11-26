@@ -31,8 +31,8 @@ public class NoteServiceImpl implements NoteService {
     public Note updateNote(Long id, Note note) {
         Note existingNote = noteRepository.findById(id).orElse(null);
         if (existingNote != null) {
-            existingNote.setTitle(note.getTitle());
-            existingNote.setNote(note.getNote());
+            existingNote.setName(note.getName());
+            existingNote.setInformation(note.getInformation());
             return noteRepository.save(existingNote);
         }
         return null;

@@ -15,6 +15,6 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
-    private String title;
-    private String note;
+    private String name;
+    private String information;
 }
