@@ -24,8 +24,8 @@ public class Session {
     private String plannedDate;
     private String editedDate;
     private boolean isEdited;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Note> notes;
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Npc> npcs;
 }
