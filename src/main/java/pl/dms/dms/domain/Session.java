@@ -20,9 +20,9 @@ public class Session {
     private Long id;
     private String name;
     private String description;
-    private Date creationDate;
-    private Date plannedDate;
-    private Date editedDate;
+    private String creationDate;
+    private String plannedDate;
+    private String editedDate;
     private boolean isEdited;
     @OneToMany(fetch = FetchType.EAGER)
     private List<Note> notes;

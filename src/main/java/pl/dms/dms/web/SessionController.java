@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.dms.dms.domain.Session;
 import pl.dms.dms.service.SessionService;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +43,10 @@ public class SessionController {
     public ResponseEntity<Session> updateSession(@PathVariable Long id, @RequestBody Session session) {
 
         session.setEdited(true);
-        session.setEditedDate(new Date());
+        session.setEditedDate(
+                LocalDateTime
+                        .now()
+                        .format(DateTimeFormatter.ISO_DATE_TIME));
         Session updatedSession = sessionService.updateSession(id, session);
 
         if (updatedSession == null) {
