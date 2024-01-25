@@ -1,9 +1,10 @@
-package pl.dms.dms.service;
+package pl.dms.dms.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.dms.dms.domain.Note;
 import pl.dms.dms.repository.NoteRepository;
+import pl.dms.dms.service.NoteService;
 
 import java.util.List;
 

@@ -9,7 +9,6 @@ import pl.dms.dms.service.SessionService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor

@@ -1,9 +1,10 @@
-package pl.dms.dms.service;
+package pl.dms.dms.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.dms.dms.domain.Session;
 import pl.dms.dms.repository.SessionRepository;
+import pl.dms.dms.service.SessionService;
 
 import java.util.List;
 

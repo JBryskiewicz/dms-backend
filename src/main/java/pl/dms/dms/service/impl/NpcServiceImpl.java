@@ -1,15 +1,16 @@
-package pl.dms.dms.service;
+package pl.dms.dms.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.dms.dms.domain.Npc;
 import pl.dms.dms.repository.NpcRepository;
+import pl.dms.dms.service.NpcService;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class NpcServiceImpl implements NpcService{
+public class NpcServiceImpl implements NpcService {
     private final NpcRepository npcRepository;
 
     @Override
