@@ -5,17 +5,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.dms.dms.domain.Session;
+import pl.dms.dms.domain.User;
 import pl.dms.dms.service.SessionService;
+import pl.dms.dms.service.UserService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/sessions")
 public class SessionController {
     private final SessionService sessionService;
+    private final UserService userService;
 
     @GetMapping
     public ResponseEntity<List<Session>> getAllSessions() {
@@ -55,9 +61,21 @@ public class SessionController {
         return new ResponseEntity<>(updatedSession, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSession(@PathVariable Long id) {
-        boolean deleted = sessionService.delete(id);
+    @DeleteMapping("/{userID}/delete/{sessionID}")
+    public ResponseEntity<Void> deleteSession(@PathVariable Long userID, @PathVariable Long sessionID) {
+        Optional<User> user = userService.findById(userID);
+        if (user.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        User modifiedUser = user.get();
+        List<Session> filteredSessions = modifiedUser.getSessions()
+                .stream()
+                .filter((session) -> !Objects.equals(session.getId(), sessionID))
+                .collect(Collectors.toList());
+        modifiedUser.setSessions(filteredSessions);
+        userService.updateUser(userID, modifiedUser);
+
+        boolean deleted = sessionService.delete(sessionID);
         if(!deleted) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

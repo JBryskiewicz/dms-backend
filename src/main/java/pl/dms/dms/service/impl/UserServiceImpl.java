@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
     private final String USER_ROLE = "ROLE_USER";
 
     @Override
+    public Optional<User> findById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
     public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
