@@ -17,8 +17,8 @@ public class Npc {
     @EqualsAndHashCode.Include
     private Long id;
 
-    @Size(max = 100)
-    @Column(length = 100)
+    @Size(max = 50)
+    @Column(length = 50)
     private String name;
 
     @Size(max = 5000)
